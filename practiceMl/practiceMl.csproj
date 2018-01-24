@@ -45,9 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbsoluteDistance.cs" />
     <Compile Include="Cluster.cs" />
+    <Compile Include="ComplexFeature.cs" />
     <Compile Include="DistanceMetric.cs" />
     <Compile Include="DoubleFeature.cs" />
+    <Compile Include="EuclideanDistance.cs" />
     <Compile Include="Feature.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
