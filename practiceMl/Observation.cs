@@ -12,23 +12,27 @@ namespace practiceMl
         private IList<Feature> features;
         private int maxFeatureNumber;
 
-
+        //constructor
         public Observation(int maxFeatureNumber)
         {
             this.features = new List<Feature>();
             this.maxFeatureNumber = maxFeatureNumber;
         }
 
-        public int getDistance(Observation observation)
+        public int GetDistance(Observation observation)
         {
             return 0;
         }
 
-        public void AddFeature()
+        public void AddFeature(Feature newFeature)
         {
             if (this.features.Count == maxFeatureNumber)
             {
-                
+
+            }
+            else
+            {
+                this.features.Add(newFeature);
             }
         }
     }

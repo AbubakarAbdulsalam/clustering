@@ -8,9 +8,13 @@ namespace practiceMl
 {
     class AbsoluteDistance : DistanceMetric
     {
+
+        public AbsoluteDistance()
+        {
+        }
         public override int getDistance(Feature observationOneFeature, Feature observationTwoFeature)
         {
-            throw new NotImplementedException();
+            return (int) Math.Abs(observationOneFeature.FeatureValue - observationTwoFeature.FeatureValue);
         }
     }
 }

@@ -33,24 +33,24 @@ namespace practiceMl
         }
 
         // remove cast somehow #to do 
-        public override int calculateDistance(Feature otherFeature)
+        public override int CalculateDistance(Feature otherFeature)
         {
-            return calculateDistance((ComplexFeature)otherFeature);
+            return CalculateDistance((ComplexFeature)otherFeature);
         }
         //
-        private  int calculateDistance(ComplexFeature otherFeature)
+        private  int CalculateDistance(ComplexFeature otherFeature)
         {
             int distance = 0;
             for (int i = 0; i < this.childFeatures.Count; i++)
             {
-                int tempDistance = this.distanceMetric.getDistance(otherFeature.getChildFeature(i), this.childFeatures.ElementAt(i));
+                int tempDistance = this.distanceMetric.getDistance(otherFeature.GetChildFeature(i), this.childFeatures.ElementAt(i));
                 distance += Math.Abs(tempDistance);
             }
             return distance;
         }
 
         //#to do. defensive check if list is not initialized
-        public Feature getChildFeature(int index)
+        public Feature GetChildFeature(int index)
         {  
             return this.childFeatures.ElementAtOrDefault(index);
         }

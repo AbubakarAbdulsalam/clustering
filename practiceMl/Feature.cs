@@ -12,6 +12,6 @@ namespace practiceMl
 
         public abstract Double FeatureValue { get; set; }
 
-        public abstract int calculateDistance(Feature otherFeature);
+        public abstract int CalculateDistance(Feature otherFeature);
     }
 }

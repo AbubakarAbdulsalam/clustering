@@ -32,7 +32,7 @@ namespace practiceMl
         }
 
         //distanceCalculation
-        public override int calculateDistance(Feature otherFeature)
+        public override int CalculateDistance(Feature otherFeature)
         {
             return distanceMetric.getDistance(this, otherFeature);
         }

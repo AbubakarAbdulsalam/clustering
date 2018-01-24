@@ -11,7 +11,8 @@ namespace practiceMl
         public EuclideanDistance() { }
 
 
-        public int CalculateDistance(Feature observationOneFeature, Feature observationTwoFeature)
+        
+        public override int getDistance(Feature observationOneFeature, Feature observationTwoFeature)
         {
             return 0;
         }

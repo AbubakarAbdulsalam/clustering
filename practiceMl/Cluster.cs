@@ -20,6 +20,12 @@ namespace practiceMl
             set { currentCentroid = value; }
         }
 
+        public Observation OldClusterCentroid
+        {
+            get { return prevCentroid; }
+            set { prevCentroid = value; }
+        }
+
         public int ClusterCount
         {
             get { return members.Count; }
@@ -35,6 +41,11 @@ namespace practiceMl
 
         private IList<Observation> members;
 
+        //constructor 
+        public Cluster()
+        {
+            this.members = new List<Observation>();
+        }
 
         public void ReCalculateCentroid()
         {
