@@ -12,6 +12,14 @@ namespace practiceMl
         private IList<Feature> features;
         private int maxFeatureNumber;
 
+        public int MaxFeatureNumber
+        {
+            get { return maxFeatureNumber; }
+            set
+            {
+                maxFeatureNumber = value;
+            }
+        }
         //constructor
         public Observation(int maxFeatureNumber)
         {
@@ -34,6 +42,16 @@ namespace practiceMl
             {
                 this.features.Add(newFeature);
             }
+        }
+
+        public void ReplaceFeature(int index, Feature newFeature)
+        {
+            this.features.RemoveAt(index);
+            this.features.Insert(index, newFeature);
+        }
+        public Feature GetFeature(int index)
+        {
+            return features.ElementAt(index);
         }
     }
 }

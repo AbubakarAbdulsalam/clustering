@@ -27,9 +27,10 @@ namespace practiceMl
 
 
         //constructor
-        public ComplexFeature()
+        public ComplexFeature(DistanceMetric metric)
         {
             childFeatures = new List<Feature>();
+            this.distanceMetric = metric;
         }
 
         // remove cast somehow #to do 
@@ -53,6 +54,21 @@ namespace practiceMl
         public Feature GetChildFeature(int index)
         {  
             return this.childFeatures.ElementAtOrDefault(index);
+        }
+
+        public void AddChildFeature(Feature additionalFeature)
+        {
+            this.childFeatures.Add(additionalFeature);
+        }
+        public override Feature Sum(Feature otherFeature)
+        {
+            ComplexFeature feature = (ComplexFeature)otherFeature;
+            ComplexFeature newFeature = new ComplexFeature(this.distanceMetric);
+            for (int i = 0; i < this.childFeatures.Count; i++)
+            {
+                newFeature.AddChildFeature(this.childFeatures.ElementAt(i).Sum(feature.GetChildFeature(i)));
+            }
+            return newFeature;
         }
     }
 }

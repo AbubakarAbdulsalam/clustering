@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    abstract class DistanceMetric
+    public abstract class DistanceMetric
     {
 
         public abstract int getDistance(Feature observationOneFeature, Feature observationTwoFeature);

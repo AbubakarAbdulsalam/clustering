@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    abstract class Feature
+    public abstract class Feature
     {
         public abstract DistanceMetric MetricUsed { get; set; }
 
         public abstract Double FeatureValue { get; set; }
 
         public abstract int CalculateDistance(Feature otherFeature);
+
+        public abstract Feature Sum(Feature otherFeature);
+
+        public abstract Feature Average(int divisor);
     }
 }
