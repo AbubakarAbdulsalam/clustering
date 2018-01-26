@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    class AbsoluteDistance : DistanceMetric
+    public class AbsoluteDistance : DistanceMetric
     {
 
         public AbsoluteDistance()

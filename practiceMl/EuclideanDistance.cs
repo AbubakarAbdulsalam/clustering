@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    class EuclideanDistance : DistanceMetric
+    public class EuclideanDistance : DistanceMetric
     {
         public EuclideanDistance() { }
 
@@ -14,7 +14,17 @@ namespace practiceMl
         
         public override int getDistance(Feature observationOneFeature, Feature observationTwoFeature)
         {
-            return 0;
+            return GetDistance((ComplexFeature)observationOneFeature, (ComplexFeature)observationTwoFeature);
+        }
+
+        private int GetDistance(ComplexFeature featureOne, ComplexFeature featureTwo)
+        {
+            double runningSum = 0.0;
+            for (int i = 0; i < featureOne.ChildFeaturesCount; i++)
+            {
+                runningSum +=Math.Pow(featureOne.GetChildFeature(i).CalculateDistance(featureTwo.GetChildFeature(i)),2);
+            }
+            return (int)Math.Sqrt(runningSum);
         }
     }
 }

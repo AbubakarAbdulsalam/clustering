@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    class ComplexFeature : Feature
+    public class ComplexFeature : Feature
     {
         //distancemetric
         private DistanceMetric distanceMetric;
@@ -41,17 +41,17 @@ namespace practiceMl
         //
         private  int CalculateDistance(ComplexFeature otherFeature)
         {
-            int distance = 0;
+            double distance = 0;
             for (int i = 0; i < this.childFeatures.Count; i++)
             {
-                int tempDistance = this.distanceMetric.getDistance(otherFeature.GetChildFeature(i), this.childFeatures.ElementAt(i));
-                distance += Math.Abs(tempDistance);
+                double tempDistance = this.distanceMetric.getDistance(otherFeature.GetChildFeature(i), this.childFeatures.ElementAt(i));
+                distance += Math.Pow(tempDistance,2);
             }
-            return distance;
+            return (int) Math.Sqrt( distance);
         }
 
         //#to do. defensive check if list is not initialized
-        public Feature GetChildFeature(int index)
+        public override Feature GetChildFeature(int index)
         {  
             return this.childFeatures.ElementAtOrDefault(index);
         }
@@ -70,5 +70,12 @@ namespace practiceMl
             }
             return newFeature;
         }
+
+        public override Feature Average(int divisor)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
