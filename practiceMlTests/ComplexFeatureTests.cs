@@ -34,6 +34,7 @@ namespace practiceMl.Tests
         [TestMethod()]
         public void CalculateDistanceTest()
         {
+            //arrange
             ComplexFeature test = new ComplexFeature(first);
             test.AddChildFeature(one);
             test.AddChildFeature(tow);
@@ -54,18 +55,31 @@ namespace practiceMl.Tests
         [TestMethod()]
         public void GetChildFeatureTest()
         {
+            ComplexFeature test = new ComplexFeature(first);
+            Feature testingchild = new DoubleFeature(first, 2.0);
+            test.AddChildFeature(testingchild);
 
+            Feature child = test.GetChildFeature(0);
+            //assert
+            Assert.AreSame(child, testingchild);
         }
 
         [TestMethod()]
         public void AddChildFeatureTest()
         {
+            ComplexFeature test = new ComplexFeature(first);
+            Feature testingchild = new DoubleFeature(first, 2.0);
 
+
+            test.AddChildFeature(testingchild);
+
+            Assert.AreEqual(test.ChildFeaturesCount, 1);
         }
 
         [TestMethod()]
         public void SumTest()
         {
+            //arrange 
             ComplexFeature testintest1 = new ComplexFeature(first);
             testintest1.AddChildFeature(one);
             testintest1.AddChildFeature(tow);
@@ -93,7 +107,22 @@ namespace practiceMl.Tests
         [TestMethod()]
         public void AverageTest()
         {
+            //arrange
+            ComplexFeature testintest1 = new ComplexFeature(first);
+            testintest1.AddChildFeature(one);
+            testintest1.AddChildFeature(tow);
 
+            ComplexFeature test1 = new ComplexFeature(first);
+            test1.AddChildFeature(testintest1);
+            test1.AddChildFeature(three);
+
+            //act
+            Feature averaged = test1.Average(2);
+
+            //assert 
+            Assert.AreEqual(averaged.GetChildFeature(0).GetChildFeature(1).FeatureValue, 7.0);
+            Assert.AreEqual(averaged.GetChildFeature(1).FeatureValue, 7.5);
+            Assert.AreSame(averaged.MetricUsed, first);
         }
     }
 }

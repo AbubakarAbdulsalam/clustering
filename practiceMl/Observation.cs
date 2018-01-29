@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    class Observation
+    public class Observation
     {
         //list of all attributes for an observation
         private IList<Feature> features;
@@ -20,6 +20,10 @@ namespace practiceMl
                 maxFeatureNumber = value;
             }
         }
+
+        
+        public int FeaturesCount
+        { get { return this.features.Count; } }
         //constructor
         public Observation(int maxFeatureNumber)
         {
@@ -36,19 +40,24 @@ namespace practiceMl
         {
             if (this.features.Count == maxFeatureNumber)
             {
-
+                throw new MaxFeatureNumberExceeded("feature can't be added, maximum will be exceeded");
             }
             else
             {
                 this.features.Add(newFeature);
+                
             }
         }
+
+        
 
         public void ReplaceFeature(int index, Feature newFeature)
         {
             this.features.RemoveAt(index);
             this.features.Insert(index, newFeature);
         }
+
+
         public Feature GetFeature(int index)
         {
             return features.ElementAt(index);

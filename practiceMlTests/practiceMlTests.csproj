@@ -56,8 +56,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ClusterTests.cs" />
     <Compile Include="ComplexFeatureTests.cs" />
     <Compile Include="DoubleFeatureTests.cs" />
+    <Compile Include="ObservationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

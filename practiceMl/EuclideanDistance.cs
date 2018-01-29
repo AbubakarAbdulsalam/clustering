@@ -12,7 +12,7 @@ namespace practiceMl
 
 
         
-        public override int getDistance(Feature observationOneFeature, Feature observationTwoFeature)
+        public override int GetDistance(Feature observationOneFeature, Feature observationTwoFeature)
         {
             return GetDistance((ComplexFeature)observationOneFeature, (ComplexFeature)observationTwoFeature);
         }

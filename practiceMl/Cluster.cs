@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    class Cluster
+    public class Cluster
     {
 
         private Observation currentCentroid;
@@ -41,16 +41,20 @@ namespace practiceMl
 
         private IList<Observation> members;
 
-        //constructor 
-        public Cluster()
+        public Cluster(Observation centroid)
         {
             this.members = new List<Observation>();
+            this.currentCentroid = centroid;
         }
+        //constructor 
+        public Cluster() : this(null) { }
+        
 
+        
         public void ReCalculateCentroid()
         {
             int maxFeature = this.members.ElementAt(0).MaxFeatureNumber;
-            IList<Feature> newCentroidFeatures = new List<Feature>();
+           
             Observation newCentroid = new Observation(maxFeature);
             newCentroid = members.ElementAt(0);
             for (int i = 0; i < maxFeature; i++)
@@ -59,8 +63,15 @@ namespace practiceMl
                 {
                    newCentroid.ReplaceFeature(i, newCentroid.GetFeature(i).Sum(this.members.ElementAt(j).GetFeature(i)));
                 }
+                newCentroid.ReplaceFeature(i, newCentroid.GetFeature(i).Average(this.members.Count));
             }
-           
+            this.prevCentroid = currentCentroid;
+            this.currentCentroid = newCentroid;
+        }
+
+        public void AddMember(Observation observation)
+        {
+            this.members.Add(observation);
         }
 
         

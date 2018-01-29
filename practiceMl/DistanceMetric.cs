@@ -9,7 +9,7 @@ namespace practiceMl
     public abstract class DistanceMetric
     {
 
-        public abstract int getDistance(Feature observationOneFeature, Feature observationTwoFeature);
+        public abstract int GetDistance(Feature observationOneFeature, Feature observationTwoFeature);
         
     }
 }

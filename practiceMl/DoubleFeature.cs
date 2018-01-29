@@ -33,24 +33,30 @@ namespace practiceMl
 
         //distanceCalculation
         public override int CalculateDistance(Feature otherFeature)
-        {
-            return distanceMetric.getDistance(this, otherFeature);
+        {//####check otherFeature not null
+            return distanceMetric.GetDistance(this, otherFeature);
         }
 
         //sum
         public override Feature Sum(Feature otherFeature)
-        {
+        {//####check other  feature not null
             return (new DoubleFeature(this.distanceMetric, (this.attributeValue + otherFeature.FeatureValue)));
         }
 
         //average
         public override Feature Average(int divisor)
         {
+            //####change to virtual and specify some logic(error check ) in parent class 
             return (new DoubleFeature(this.distanceMetric,(this.FeatureValue / (double)divisor)));
         }
 
         public override Feature GetChildFeature(int index)
-        {
+        {//###throw exception
+            return null;
+        }
+
+        public override void AddChildFeature(Feature child)
+        {//###throw exception
             throw new NotImplementedException();
         }
     }

@@ -12,7 +12,7 @@ namespace practiceMl
         public AbsoluteDistance()
         {
         }
-        public override int getDistance(Feature observationOneFeature, Feature observationTwoFeature)
+        public override int GetDistance(Feature observationOneFeature, Feature observationTwoFeature)
         {
             return (int) Math.Abs(observationOneFeature.FeatureValue - observationTwoFeature.FeatureValue);
         }

@@ -20,48 +20,56 @@ namespace practiceMl
         private IList<Feature> childFeatures;
         public int ChildFeaturesCount
         {
+            
             get { return childFeatures.Count; }
         }
 
-        public override double FeatureValue { get { return -1; } set {; } }
+        public override double FeatureValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+
 
 
         //constructor
         public ComplexFeature(DistanceMetric metric)
         {
+            //check distance metric is not null
             childFeatures = new List<Feature>();
             this.distanceMetric = metric;
         }
 
-        // remove cast somehow #to do 
+        // #####remove cast somehow #to do and check if otherFeature is null
         public override int CalculateDistance(Feature otherFeature)
         {
             return CalculateDistance((ComplexFeature)otherFeature);
         }
-        //
+        
+
         private  int CalculateDistance(ComplexFeature otherFeature)
         {
             double distance = 0;
             for (int i = 0; i < this.childFeatures.Count; i++)
             {
-                double tempDistance = this.distanceMetric.getDistance(otherFeature.GetChildFeature(i), this.childFeatures.ElementAt(i));
+                double tempDistance = this.distanceMetric.GetDistance(otherFeature.GetChildFeature(i), this.childFeatures.ElementAt(i));
                 distance += Math.Pow(tempDistance,2);
             }
             return (int) Math.Sqrt( distance);
         }
 
-        //#to do. defensive check if list is not initialized
+        //check index and throwindex exception 
         public override Feature GetChildFeature(int index)
         {  
             return this.childFeatures.ElementAtOrDefault(index);
         }
 
-        public void AddChildFeature(Feature additionalFeature)
+        public override void AddChildFeature(Feature additionalFeature)
         {
             this.childFeatures.Add(additionalFeature);
         }
+
+        
         public override Feature Sum(Feature otherFeature)
         {
+            //#####check if otherFeature is null
             ComplexFeature feature = (ComplexFeature)otherFeature;
             ComplexFeature newFeature = new ComplexFeature(this.distanceMetric);
             for (int i = 0; i < this.childFeatures.Count; i++)
@@ -73,7 +81,14 @@ namespace practiceMl
 
         public override Feature Average(int divisor)
         {
-            throw new NotImplementedException();
+            //#####check divisor not negative or zero
+            ComplexFeature newComplex = new ComplexFeature(this.distanceMetric);
+            
+            for (int i = 0; i < this.childFeatures.Count; i++)
+            {
+                newComplex.AddChildFeature(this.childFeatures.ElementAt(i).Average(divisor));
+            }
+            return newComplex;
         }
 
         

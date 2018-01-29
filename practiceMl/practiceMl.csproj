@@ -58,7 +58,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Image.cs" />
     <Compile Include="KMeans.cs" />
+    <Compile Include="MaxFeatureNumberExceeded.cs" />
     <Compile Include="Observation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

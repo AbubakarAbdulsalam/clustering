@@ -18,5 +18,7 @@ namespace practiceMl
 
         public abstract Feature Average(int divisor);
         public abstract Feature GetChildFeature(int index);
+
+        public abstract void AddChildFeature(Feature child);
     }
 }
