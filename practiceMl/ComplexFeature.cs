@@ -24,7 +24,10 @@ namespace practiceMl
             get { return childFeatures.Count; }
         }
 
-        public override double FeatureValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override double FeatureValue {
+            get { throw new NotImplementedException("The following class does not implement requested functionality " + this.GetType()); }
+            set { throw new NotImplementedException("The following class does not implement requested functionality " + this.GetType()); }
+        }
 
 
 

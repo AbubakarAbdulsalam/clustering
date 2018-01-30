@@ -52,12 +52,14 @@ namespace practiceMl
 
         public override Feature GetChildFeature(int index)
         {//###throw exception
-            return null;
+             throw new NotImplementedException("The following class does not implement requested functionality " + this.GetType()); 
+            
         }
 
         public override void AddChildFeature(Feature child)
         {//###throw exception
-            throw new NotImplementedException();
+            throw new NotImplementedException("The following class does not implement requested functionality " + this.GetType()); 
+            
         }
     }
 }

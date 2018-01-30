@@ -24,11 +24,7 @@ namespace practiceMl.Tests
         Feature nine = new DoubleFeature(first, 8.0);
         Feature ten = new DoubleFeature(first, 9.0);
 
-        [TestMethod()]
-        public void ComplexFeatureTest()
-        {
-
-        }
+     
 
 
         [TestMethod()]

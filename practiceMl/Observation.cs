@@ -33,7 +33,12 @@ namespace practiceMl
 
         public int GetDistance(Observation observation)
         {
-            return 0;
+            int runningSum = 0;
+            for(int i=0; i < this.features.Count; i++)
+            {
+               runningSum +=  this.features.ElementAt(i).CalculateDistance(observation.GetFeature(i));
+            }
+            return runningSum;
         }
 
         public void AddFeature(Feature newFeature)

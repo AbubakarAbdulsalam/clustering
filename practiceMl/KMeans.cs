@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace practiceMl
 {
-    class KMeans
+    public class KMeans
     {
         private int noCluster;
 
@@ -65,6 +65,16 @@ namespace practiceMl
             for (int i = 0; i < this.noCluster; i++)
             {
                 this.currentClusters.Add(new Cluster());
+            }
+        }
+
+        public void AssignCluster(Observation someObservation)
+        {
+            IDictionary<Cluster, int> distances = new Dictionary<Cluster, int>();
+
+            for (int i = 0; i < this.currentClusters.Count; i++)
+            {
+
             }
         }
     }
