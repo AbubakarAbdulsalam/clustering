@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace practiceMl
+namespace ConsoleKMeans
 {
     public class ComplexFeature : Feature
     {
@@ -43,10 +43,15 @@ namespace practiceMl
         // #####remove cast somehow #to do and check if otherFeature is null
         public override int CalculateDistance(Feature otherFeature)
         {
-            return CalculateDistance((ComplexFeature)otherFeature);
+            if(!(otherFeature is ComplexFeature))
+            {
+                //###create new exception class or find something to return
+                throw  new MaxFeatureNumberExceeded("wrong");
+            }
+            return this.distanceMetric.GetDistance(otherFeature,this);
         }
         
-
+        //delete ######
         private  int CalculateDistance(ComplexFeature otherFeature)
         {
             double distance = 0;
@@ -85,13 +90,21 @@ namespace practiceMl
         public override Feature Average(int divisor)
         {
             //#####check divisor not negative or zero
-            ComplexFeature newComplex = new ComplexFeature(this.distanceMetric);
-            
-            for (int i = 0; i < this.childFeatures.Count; i++)
+            try
             {
-                newComplex.AddChildFeature(this.childFeatures.ElementAt(i).Average(divisor));
+                ComplexFeature newComplex = new ComplexFeature(this.distanceMetric);
+
+                for (int i = 0; i < this.childFeatures.Count; i++)
+                {
+                    newComplex.AddChildFeature(this.childFeatures.ElementAt(i).Average(divisor));
+                }
+                return newComplex;
             }
-            return newComplex;
+            catch (DivideByZeroException)
+            {
+                return null;
+            }
+            
         }
 
         

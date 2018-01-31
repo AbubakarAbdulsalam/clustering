@@ -47,7 +47,14 @@ namespace practiceMl
         public override Feature Average(int divisor)
         {
             //####change to virtual and specify some logic(error check ) in parent class 
-            return (new DoubleFeature(this.distanceMetric,(this.FeatureValue / (double)divisor)));
+            try
+            {
+                return (new DoubleFeature(this.distanceMetric, (this.FeatureValue / (double)divisor)));
+            }
+            catch (DivideByZeroException)
+            {
+                return null;
+            }
         }
 
         public override Feature GetChildFeature(int index)

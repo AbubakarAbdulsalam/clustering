@@ -1,4 +1,4 @@
-﻿namespace practiceMl
+﻿namespace ImageClustering
 {
     partial class Form1
     {
@@ -36,3 +36,4 @@
         #endregion
     }
 }
+

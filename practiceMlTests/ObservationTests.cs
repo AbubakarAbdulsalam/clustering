@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ConsoleKMeans;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using practiceMl;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace practiceMl.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(MaxFeatureNumberExceeded))]
         public void AddFeatureOverflowTest()
         {
             Feature testFeature = new DoubleFeature(new AbsoluteDistance(),4.0);
@@ -31,17 +33,11 @@ namespace practiceMl.Tests
             Observation testObservation = new Observation(1);
 
             testObservation.AddFeature(testFeature);
-
-            try
-            {
-                testObservation.AddFeature(testFeature2);
-            }
-            catch (MaxFeatureNumberExceeded e)
-            {
-                Console.Write(e.Message);
-            }
+            testObservation.AddFeature(testFeature2);
             
         }
+
+       
 
         [TestMethod()]
         public void GetFeatureTest()

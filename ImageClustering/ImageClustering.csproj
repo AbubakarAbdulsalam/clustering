@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1C7C89A-651D-4937-AEA3-356613F66EBD}</ProjectGuid>
+    <ProjectGuid>{4A0707A1-6902-45DE-9644-28B32D2AFAE5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>practiceMl</RootNamespace>
-    <AssemblyName>practiceMl</AssemblyName>
+    <RootNamespace>ImageClustering</RootNamespace>
+    <AssemblyName>ImageClustering</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,6 +53,8 @@
     </Compile>
     <Compile Include="ImageCreationException.cs" />
     <Compile Include="ImageDetails.cs" />
+    <Compile Include="ImagePrep.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

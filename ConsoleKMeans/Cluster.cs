@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace practiceMl
+namespace ConsoleKMeans
 {
     public class Cluster
     {
@@ -53,25 +53,38 @@ namespace practiceMl
         
         public void ReCalculateCentroid()
         {
-            int maxFeature = this.members.ElementAt(0).MaxFeatureNumber;
-           
-            Observation newCentroid = new Observation(maxFeature);
-            newCentroid = members.ElementAt(0);
-            for (int i = 0; i < maxFeature; i++)
+
+            int maxFeature = this.currentCentroid.MaxFeatureNumber;
+            if(this.members.Count == 0)
             {
-                for (int j = 1; j < this.members.Count; j++)
-                {
-                   newCentroid.ReplaceFeature(i, newCentroid.GetFeature(i).Sum(this.members.ElementAt(j).GetFeature(i)));
-                }
-                newCentroid.ReplaceFeature(i, newCentroid.GetFeature(i).Average(this.members.Count));
+
             }
-            this.prevCentroid = currentCentroid;
-            this.currentCentroid = newCentroid;
+            else
+            {
+                Observation newCentroid = new Observation(maxFeature);
+                newCentroid = members.ElementAt(0);
+                for (int i = 0; i < maxFeature; i++)
+                {
+                    for (int j = 1; j < this.members.Count; j++)
+                    {
+                        newCentroid.ReplaceFeature(i, newCentroid.GetFeature(i).Sum(this.members.ElementAt(j).GetFeature(i)));
+                    }
+                    newCentroid.ReplaceFeature(i, newCentroid.GetFeature(i).Average(this.members.Count));
+                }
+                this.prevCentroid = currentCentroid;
+                this.currentCentroid = newCentroid;
+            }
+            
         }
 
         public void AddMember(Observation observation)
         {
             this.members.Add(observation);
+        }
+
+        public void EmptyMembers()
+        {
+            this.members.Clear();
         }
 
         

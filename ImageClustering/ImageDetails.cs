@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using ConsoleKMeans;
 
-namespace practiceMl
+namespace ImageClustering
 {
     public class ImageDetails : Observation
     {

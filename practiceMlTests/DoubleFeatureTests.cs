@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ConsoleKMeans;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using practiceMl;
 using System;
 using System.Collections.Generic;

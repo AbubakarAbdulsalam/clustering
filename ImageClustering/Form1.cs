@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace practiceMl
+namespace ImageClustering
 {
     public partial class Form1 : Form
     {

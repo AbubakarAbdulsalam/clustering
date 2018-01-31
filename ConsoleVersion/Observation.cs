@@ -33,6 +33,7 @@ namespace practiceMl
 
         public int GetDistance(Observation observation)
         {
+            //#### CONSIDER NORMALIZING 
             int runningSum = 0;
             for(int i=0; i < this.features.Count; i++)
             {

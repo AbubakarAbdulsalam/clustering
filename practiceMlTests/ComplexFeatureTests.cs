@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ConsoleKMeans;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using practiceMl;
 using System;
 using System.Collections.Generic;
@@ -31,11 +32,11 @@ namespace practiceMl.Tests
         public void CalculateDistanceTest()
         {
             //arrange
-            ComplexFeature test = new ComplexFeature(first);
+            ComplexFeature test = new ComplexFeature(new EuclideanDistance());
             test.AddChildFeature(one);
             test.AddChildFeature(tow);
             test.AddChildFeature(three);
-            ComplexFeature otherTest = new ComplexFeature(first);
+            ComplexFeature otherTest = new ComplexFeature(new EuclideanDistance());
 
             otherTest.AddChildFeature(four);
             otherTest.AddChildFeature(five);

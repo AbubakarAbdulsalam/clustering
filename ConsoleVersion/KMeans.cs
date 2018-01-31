@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace practiceMl
 {
@@ -68,13 +65,34 @@ namespace practiceMl
             }
         }
 
-        public void AssignCluster(Observation someObservation)
+        private void AssignCluster(Observation someObservation)
         {
-            IDictionary<Cluster, int> distances = new Dictionary<Cluster, int>();
+            var distances  = new Dictionary<Cluster, int>();
+          
 
             for (int i = 0; i < this.currentClusters.Count; i++)
             {
+                distances.Add(this.currentClusters.ElementAt(i), this.currentClusters.ElementAt(i).ClusterCentroid.GetDistance(someObservation));
 
+            }
+            var closestDistance = distances.Min(dis => dis.Value);
+            Cluster assigned = distances.FirstOrDefault(dis => dis.Value == closestDistance).Key;
+            assigned.AddMember(someObservation);   
+        }
+
+        public void AssignCluster(IList<Observation> observations)
+        {
+            for (int i = 0; i < observations.Count; i++)
+            {
+                AssignCluster(observations.ElementAt(i));
+            }
+        }
+
+        public void EmptyClusters()
+        {
+            foreach (Cluster someCluster in this.currentClusters)
+            {
+                someCluster.EmptyMembers();
             }
         }
     }

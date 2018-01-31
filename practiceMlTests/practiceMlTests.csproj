@@ -59,6 +59,7 @@
     <Compile Include="ClusterTests.cs" />
     <Compile Include="ComplexFeatureTests.cs" />
     <Compile Include="DoubleFeatureTests.cs" />
+    <Compile Include="KMeansTests.cs" />
     <Compile Include="ObservationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,9 +67,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\practiceMl\practiceMl.csproj">
-      <Project>{E1C7C89A-651D-4937-AEA3-356613F66EBD}</Project>
-      <Name>practiceMl</Name>
+    <ProjectReference Include="..\ConsoleKMeans\ConsoleKMeans.csproj">
+      <Project>{1a00a582-bdc9-48e5-8a18-12a1cd5826b9}</Project>
+      <Name>ConsoleKMeans</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
