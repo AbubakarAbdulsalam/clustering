@@ -10,7 +10,7 @@ namespace ImageClustering
     public static class ImagePrep
     {
         //###still need to fix a lot, like getting the specific number of pixels each picture should contain before starting
-        //to use the following, methods
+        //to use the following functions
         
         static   IList<String> paths = new List<string>();
 
@@ -28,7 +28,8 @@ namespace ImageClustering
                 {
                     image.Resize(maxWidth, maxHeight);
                 }
-                imageObservations.Add(MakeObservation(image, (image.ImageHeight * image.ImageWidth)));
+                MakeObservation(image);
+                imageObservations.Add(image);
             }
             return imageObservations;
         }
@@ -43,9 +44,9 @@ namespace ImageClustering
             paths.Add(path);
         }
 
-        public static Observation MakeObservation(ImageDetails image, int size)
+        public static void MakeObservation(ImageDetails image)
         {
-            Observation imageObservation = new Observation((image.ImageHeight * image.ImageWidth));
+           
             for (int i = 0; i < image.ImageHeight; i++)
             {
                 for(int j =0; j < image.ImageWidth ; j++)
@@ -54,10 +55,10 @@ namespace ImageClustering
                     pixel.AddChildFeature(new DoubleFeature(new AbsoluteDistance(), image.GetRComponent(j, i)));
                     pixel.AddChildFeature(new DoubleFeature(new AbsoluteDistance(), image.GetGComponent(j, i)));
                     pixel.AddChildFeature(new DoubleFeature(new AbsoluteDistance(), image.GetBComponent(j, i)));
-                    imageObservation.AddFeature(pixel);
+                    image.AddFeature(pixel);
                 }
             }
-            return imageObservation;
+            
         }
     }
 

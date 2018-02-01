@@ -31,6 +31,8 @@ namespace practiceMl.Tests
         [TestMethod()]
         public void ReCalculateCentroidTest()
         {
+
+            // not really testable code ####consider redefining ReCalculate centroid
             Cluster testCluster = new Cluster();
 
             Feature testFeature = new DoubleFeature(new AbsoluteDistance(), 4.0);

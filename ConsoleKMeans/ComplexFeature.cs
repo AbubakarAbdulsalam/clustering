@@ -41,6 +41,12 @@ namespace ConsoleKMeans
         }
 
         // #####remove cast somehow #to do and check if otherFeature is null
+        /// <summary>
+        /// Calculates the distance between this feature and another feature instance based 
+        /// on the distanceMetric specified for this instance
+        /// </summary>
+        /// <param name="otherFeature">Feature instance to be compared to this instance</param>
+        /// <returns>the numerical distance between these two instances based on the distance metric specifie</returns>
         public override int CalculateDistance(Feature otherFeature)
         {
             if(!(otherFeature is ComplexFeature))
@@ -63,7 +69,12 @@ namespace ConsoleKMeans
             return (int) Math.Sqrt( distance);
         }
 
-        //check index and throwindex exception 
+        //check index and throwindex exception #####TO DO
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public override Feature GetChildFeature(int index)
         {  
             return this.childFeatures.ElementAtOrDefault(index);
@@ -74,7 +85,11 @@ namespace ConsoleKMeans
             this.childFeatures.Add(additionalFeature);
         }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="otherFeature"></param>
+        /// <returns></returns>
         public override Feature Sum(Feature otherFeature)
         {
             //#####check if otherFeature is null
@@ -86,7 +101,11 @@ namespace ConsoleKMeans
             }
             return newFeature;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="divisor"></param>
+        /// <returns></returns>
         public override Feature Average(int divisor)
         {
             //#####check divisor not negative or zero
@@ -100,6 +119,7 @@ namespace ConsoleKMeans
                 }
                 return newComplex;
             }
+            //#### FIIIIXXXXXX
             catch (DivideByZeroException)
             {
                 return null;

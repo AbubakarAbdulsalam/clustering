@@ -23,8 +23,11 @@ namespace ConsoleKMeans
             
         }
 
+        //###consider definig childFeature count in base class feature and exceptions in none ComplexFeature sub classes 
+        //and moving logic here to above function
         private int GetDistance(ComplexFeature featureOne, ComplexFeature featureTwo)
         {
+
             double runningSum = 0.0;
             for (int i = 0; i < featureOne.ChildFeaturesCount; i++)
             {

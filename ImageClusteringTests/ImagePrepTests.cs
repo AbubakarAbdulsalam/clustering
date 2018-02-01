@@ -17,7 +17,10 @@ namespace ImageClustering.Tests
         public void MakeObservationTest()
         {
             ImageDetails s = new ImageDetails((626 * 469), @"C:\Users\ezabuab\Pictures\test2.jpg");
-            Observation test = ImagePrep.MakeObservation(s, (626 *469));
+            ImagePrep.MakeObservation(s);
+            //not a real test just checking that this works 
+            //example shows this is not scalable unless parallel execution is enabled 
+            
         }
     }
 }

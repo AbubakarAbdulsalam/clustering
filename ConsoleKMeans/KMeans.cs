@@ -70,9 +70,9 @@ namespace ConsoleKMeans
             for (int i = 0; i < this.currentClusters.Count; i++)
                 distances.Add(this.currentClusters.ElementAt(i), this.currentClusters.ElementAt(i).ClusterCentroid.GetDistance(someObservation));
 
-            var closestDistance = distances.Min(dis => dis.Value);
-            Cluster assigned = distances.FirstOrDefault(dis => dis.Value == closestDistance).Key;
-            assigned.AddMember(someObservation);   
+            int closestDistance = distances.Min(dis => dis.Value);
+            distances.FirstOrDefault(dis => dis.Value == closestDistance).Key.AddMember(someObservation);
+               
         }
 
         public void AssignCluster(IList<Observation> observations)
