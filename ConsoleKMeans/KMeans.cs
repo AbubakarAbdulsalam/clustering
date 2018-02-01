@@ -53,17 +53,13 @@ namespace ConsoleKMeans
         public void ReCalculateCentroids()
         {
             foreach (Cluster c in currentClusters)
-            {
                 c.ReCalculateCentroid();
-            }
         }
 
         private void InitializeClusters()
         {
             for (int i = 0; i < this.noCluster; i++)
-            {
                 this.currentClusters.Add(new Cluster());
-            }
         }
 
         private void AssignCluster(Observation someObservation)
@@ -72,10 +68,8 @@ namespace ConsoleKMeans
           
 
             for (int i = 0; i < this.currentClusters.Count; i++)
-            {
                 distances.Add(this.currentClusters.ElementAt(i), this.currentClusters.ElementAt(i).ClusterCentroid.GetDistance(someObservation));
 
-            }
             var closestDistance = distances.Min(dis => dis.Value);
             Cluster assigned = distances.FirstOrDefault(dis => dis.Value == closestDistance).Key;
             assigned.AddMember(someObservation);   
@@ -84,17 +78,13 @@ namespace ConsoleKMeans
         public void AssignCluster(IList<Observation> observations)
         {
             for (int i = 0; i < observations.Count; i++)
-            {
                 AssignCluster(observations.ElementAt(i));
-            }
         }
 
         public void EmptyClusters()
         {
             foreach (Cluster someCluster in this.currentClusters)
-            {
                 someCluster.EmptyMembers();
-            }
         }
     }
 }

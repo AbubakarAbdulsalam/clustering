@@ -7,9 +7,11 @@ using ConsoleKMeans;
 
 namespace ImageClustering
 {
-    static class ImagePrep
+    public static class ImagePrep
     {
-
+        //###still need to fix a lot, like getting the specific number of pixels each picture should contain before starting
+        //to use the following, methods
+        
         static   IList<String> paths = new List<string>();
 
         static  IList<String> initialCentroidSPaths = new List<String>();
@@ -22,7 +24,7 @@ namespace ImageClustering
             for(int i=0; i < paths.Count; i++)
             {
                 ImageDetails image = new ImageDetails((maxHeight * maxWidth), paths.ElementAt(i));
-                if (image.ImageHeight > maxHeight || image.ImageWidth > maxWidth)
+                if (image.ImageHeight != maxHeight || image.ImageWidth != maxWidth)
                 {
                     image.Resize(maxWidth, maxHeight);
                 }
@@ -41,12 +43,12 @@ namespace ImageClustering
             paths.Add(path);
         }
 
-        static Observation MakeObservation(ImageDetails image, int size)
+        public static Observation MakeObservation(ImageDetails image, int size)
         {
             Observation imageObservation = new Observation((image.ImageHeight * image.ImageWidth));
             for (int i = 0; i < image.ImageHeight; i++)
             {
-                for(int j =0; i < image.ImageWidth; i++)
+                for(int j =0; j < image.ImageWidth ; j++)
                 {
                     ComplexFeature pixel = new ComplexFeature(new EuclideanDistance());
                     pixel.AddChildFeature(new DoubleFeature(new AbsoluteDistance(), image.GetRComponent(j, i)));
