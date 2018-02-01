@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "practiceMlTests", "practiceMlTests\practiceMlTests.csproj", "{C5B655C1-8206-443A-A72D-6D821B471F4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleKMeansTest", "practiceMlTests\ConsoleKMeansTest.csproj", "{C5B655C1-8206-443A-A72D-6D821B471F4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleKMeans", "ConsoleKMeans\ConsoleKMeans.csproj", "{1A00A582-BDC9-48E5-8A18-12A1CD5826B9}"
 EndProject
